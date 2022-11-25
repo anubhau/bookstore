@@ -1,8 +1,11 @@
 package com.fdmgroup.bookstore.data;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
+import com.fdmgroup.bookstore.model.Book;
+import com.fdmgroup.bookstore.model.Order;
 import com.fdmgroup.bookstore.model.User;
 
 public class UserArrayListRepository implements UserRepository {
@@ -12,7 +15,6 @@ public class UserArrayListRepository implements UserRepository {
 	private List<User> users;
 
 	public UserArrayListRepository() {
-		super();
 	}
 
 	public UserArrayListRepository(List<User> users) {
@@ -88,38 +90,62 @@ public class UserArrayListRepository implements UserRepository {
 	public List<User> findAll() {
 		return users;
 	}
+  
+	//input a price and list of all books are returned whoch are more expensive than this price
+   // Book b=new Book(null, 0, 0, null, null);
+/*	public List <Book> morepricethanthis(int price)
+	{
+	List<Book>allBooks=new ArrayList<>();
+	List<Book>books=b.getallBooks();;
+	for(Book b:books)
+	{
+		
+		books.geallBooks();
+		newprice=b.getPrice();
+		if(newprice>price)
+			allBooks=books.add(e);
+	}
+	return allBokks;
+	}
+	/*
+ //return the list of all books by an author
+	//public List<Book> getAllBooks(String author){
+		//List<Book> allBooks=new ArrayList();
+	      //List<Book> userBooks = null;
+		//for(Book each:book)
+		//{
+			
+		//if((each.getAuthor).equals(author))
+		//return(getallbooks(author));
+		//}	
+	
+	*/
 
 	
-	@Override
-	public String toString() {
-		return "UserArrayListRepository [users=" + users + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((users == null) ? 0 : users.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UserArrayListRepository other = (UserArrayListRepository) obj;
-		if (users == null) {
-			if (other.users != null)
-				return false;
-		} else if (!users.equals(other.users))
-			return false;
-		return true;
+	
+	public List<Book> getAllBooks(String author) {
+		List<Book> allBooks = new ArrayList<>();
+		List<Book> userBooks = null;
+		
+		for(User user : users) {
+			userBooks = user.getUserBooks(author);
+			for(Book userBook : userBooks) {
+				if(!allBooks.contains(userBook)) {
+					allBooks.add(userBook);
+				}
+			}
+		}
+		return allBooks;
 	}
 	
 	
-
 }
+
+	
+
+	
+	
+	
+	
+
+

@@ -17,7 +17,37 @@ public class Order {
 		this.userId = userId;
 		this.orderDateTime = orderDateTime;
 	}
-	
-	
+
+	public int getOrderId() {
+		return OrderId;
+	}
+
+	public void setOrderId(int orderId) {
+		OrderId = orderId;
+	}
+
+	public Book getBookOrdered() {
+		return bookOrdered;
+	}
+
+	public void setBookOrdered(Book bookOrdered) {
+		this.bookOrdered = bookOrdered;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public LocalDateTime getOrderDateTime() {
+		return orderDateTime;
+	}
+
+	public void setOrderDateTime(LocalDateTime orderDateTime) {
+		this.orderDateTime = orderDateTime;
+	}
 	
 }

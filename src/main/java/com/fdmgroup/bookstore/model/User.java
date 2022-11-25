@@ -192,4 +192,17 @@ public class User {
 	}
 	
 	
+	public List<Book> getUserBooks(String author) {
+		List<Book> userBooks = new ArrayList<>();
+		Book orderBook = null;
+		for(Order order : orders) {
+			orderBook = order.getBookOrdered();
+			if(orderBook.getAuthor().equalsIgnoreCase(author)
+					&& !userBooks.contains(orderBook)) {
+				userBooks.add(orderBook);
+			}
+		}
+		return userBooks;
+	}
+	
 }

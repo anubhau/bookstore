@@ -1,9 +1,7 @@
 package com.fdmgroup.bookstore.data;
 
-import com.fdmgroup.bookstore.model.User;
-
-public interface Removable {
+public interface Removable <T>{
 	
-	public User delete(User user);
+	public void delete(T t);
 
 }
